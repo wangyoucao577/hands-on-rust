@@ -31,6 +31,15 @@ My notes when reading [The Rust Programming Language](https://doc.rust-lang.org/
     - There’s no mechanism being used to synchronize access to the data.     
   - Data races cause undefined behavior and can be difficult to diagnose and fix when you’re trying to track them down at runtime;     
 
+## 7. Managing Growing Projects with Packages, Crates and Modules
+
+### Packages and Crates     
+- A crate is the smallest amount of code that the Rust compiler considers at a time.      
+- A crate can come in one of two forms: a binary crate or a library crate.     
+- A package can contain **as many binary crates** as you like, but **at most only one library crate**.
+- Cargo follows a convention that `src/main.rs` is the crate root of a binary crate with the same name as the package.   
+- Likewise, Cargo knows that if the package directory contains `src/lib.rs`, the package contains a library crate with the same name as the package, and `src/lib.rs` is its crate root.    
+- A package can have **multiple binary crates** by placing files in the `src/bin` directory: each file will be a separate binary crate.      
 
 ## References
 - [The Rust Programming Language](https://doc.rust-lang.org/book/)    
