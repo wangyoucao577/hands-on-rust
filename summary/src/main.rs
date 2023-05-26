@@ -38,7 +38,7 @@ pub trait Summary {
 }
 
 pub struct NewsArticle {
-    pub headline: String, 
+    pub headline: String,
     pub location: String,
     pub author: String,
     pub content: String,
@@ -56,7 +56,7 @@ impl Summary for NewsArticle {
 }
 
 pub struct Tweet {
-    pub username: String, 
+    pub username: String,
     pub content: String,
     pub reply: bool,
     pub retweet: bool,
@@ -84,18 +84,14 @@ pub fn notify_traits_bound_syntax_both<T: Summary, U: Summary>(item1: &T, item2:
     println!("Breaking news! {} {}", item1.summarize(), item2.summarize());
 }
 
-use std::fmt::Display;
 use std::fmt::Debug;
+use std::fmt::Display;
 
 #[allow(dead_code)]
-pub fn notify_multiple_trait_impls(_item: &(impl Summary + Display)) {
-
-}
+pub fn notify_multiple_trait_impls(_item: &(impl Summary + Display)) {}
 
 #[allow(dead_code)]
-pub fn notify_multiple_trait_bounds<T: Summary + Display>(_item: &T) {
-
-}
+pub fn notify_multiple_trait_bounds<T: Summary + Display>(_item: &T) {}
 
 #[allow(dead_code)]
 fn some_function<T: Display + Clone, U: Clone + Debug>(_t: &T, _u: &U) -> i32 {
@@ -103,7 +99,7 @@ fn some_function<T: Display + Clone, U: Clone + Debug>(_t: &T, _u: &U) -> i32 {
 }
 
 #[allow(dead_code)]
-fn some_function_with_where<T, U>(_t: &T, _u: &U) -> i32 
+fn some_function_with_where<T, U>(_t: &T, _u: &U) -> i32
 where
     T: Display + Clone,
     U: Clone + Debug,
@@ -114,9 +110,7 @@ where
 fn returns_summarizable() -> impl Summary {
     Tweet {
         username: String::from("horse_ebooks"),
-        content: String::from(
-            "of course, as you probably already know, people",
-        ),
+        content: String::from("of course, as you probably already know, people"),
         reply: false,
         retweet: false,
     }
