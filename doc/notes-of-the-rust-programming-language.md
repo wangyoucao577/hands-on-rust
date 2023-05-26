@@ -63,5 +63,11 @@ My notes when reading [The Rust Programming Language](https://doc.rust-lang.org/
 
 
 
+## Useful Tools
+- [Appendix D - Useful Development Tools](https://doc.rust-lang.org/book/appendix-04-useful-development-tools.html)    
+- [rust-analyzer](https://rust-analyzer.github.io/)
+- [Rust in Visual Studio Code](https://code.visualstudio.com/docs/languages/rust)      
+
+
 ## References
 - [The Rust Programming Language](https://doc.rust-lang.org/book/)    
