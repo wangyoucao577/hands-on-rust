@@ -13,11 +13,10 @@ mod tests {
     }
 }
 
-mod front_of_house;
 mod back_of_house;
+mod front_of_house;
 
 pub use crate::front_of_house::hosting;
-
 
 pub fn eat_at_restaurant() {
     // absolute path
@@ -36,10 +35,8 @@ pub fn eat_at_restaurant() {
     // to see or modify the seasonal fruit that comes with the meal
     // meal.seasonal_fruit = String::from("blueberries");
 
-
     let _order1 = back_of_house::Appetizer::Soup;
     let _order2 = back_of_house::Appetizer::Salad;
-
 }
 
 fn deliver_order() {}
