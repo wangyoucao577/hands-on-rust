@@ -55,6 +55,13 @@ My notes when reading [The Rust Programming Language](https://doc.rust-lang.org/
 - **Private vs public:** Code within a module is private from its parent modules by default. To make a module public, declare it with `pub mod` instead of `mod`. To make items within a public module public as well, use `pub` before their declarations.
 - **The `use` keyword:** Within a scope, the `use` keyword creates shortcuts to items to reduce repetition of long paths. In any scope that can refer to `crate::garden::vegetables::Asparagus`, you can create a shortcut with `use crate::garden::vegetables::Asparagus`; and from then on you only need to write `Asparagus` to make use of that type in the scope.    
 
+## 10. Generic Types, Traits, and Lifetimes
+
+### Traits: Defining Shared Behavior
+
+- Note: Traits are **similar to** a feature often called **interfaces** in other languages, although **with some differences**.
+
+
 
 ## References
 - [The Rust Programming Language](https://doc.rust-lang.org/book/)    
