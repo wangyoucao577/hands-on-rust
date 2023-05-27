@@ -77,6 +77,14 @@ My notes when reading [The Rust Programming Language](https://doc.rust-lang.org/
   - But before specifying `'static` as the lifetime for a reference, think about whether the reference you have actually lives the entire lifetime of your program or not, and whether you want it to.
   - Most of the time, an error message suggesting the `'static` lifetime results from attempting to create a **dangling reference** or a mismatch of the available lifetimes. In such cases, the solution is fixing those problems, not specifying the `'static` lifetime.
 
+## 11. Writing Automated Tests
+
+### Two Main Categories of Tests   
+- The Rust community thinks about tests in terms of two main categories: **unit tests** and **integration tests**.
+  - **unit tests**: small and more focused, testing one module in isolation at a time, and can test private interfaces      
+  - **integration tests**: entirely external to your library and use your code in the same way any other external code would, using only the public interface and potentially exercising multiple modules per test.
+
+
 
 
 ## Useful Tools
