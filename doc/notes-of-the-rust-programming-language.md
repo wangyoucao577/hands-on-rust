@@ -59,7 +59,23 @@ My notes when reading [The Rust Programming Language](https://doc.rust-lang.org/
 
 ### Traits: Defining Shared Behavior
 
-- Note: Traits are **similar to** a feature often called **interfaces** in other languages, although **with some differences**.
+- Note: **Traits** are **similar to** a feature often called **interfaces** in other languages, although **with some differences**.
+
+### Validating References with Lifetimes     
+
+- The main aim of **lifetimes** is to prevent **dangling references**. 
+- There is no way we can specify **lifetime** parameters that would change the **dangling reference**, and Rust won’t let us create a **dangling reference**. 
+- **Lifetime** annotations **don’t change** how long any of the references live. Rather, they describe the relationships of the **lifetimes** of multiple references to each other without affecting the **lifetimes**. 
+- One **lifetime** annotation by itself doesn’t have much meaning, because the annotations are meant to tell Rust how generic lifetime parameters of multiple references relate to each other.
+- **lifetime elision rules**
+  - These aren’t rules for programmers to follow; they’re a set of particular cases that the compiler will consider, and if your code fits these cases, you don’t need to write the lifetimes explicitly.
+  - The compiler uses **three rules** to figure out the lifetimes of the references when there aren’t explicit annotations.
+    - The first rule is that the compiler assigns a lifetime parameter to each parameter that’s a reference. In other words, a function with one parameter gets one lifetime parameter: `fn foo<'a>(x: &'a i32)`; a function with two parameters gets two separate lifetime parameters: `fn foo<'a, 'b>(x: &'a i32, y: &'b i32)`; and so on.
+    - The second rule is that, if there is exactly one input lifetime parameter, that lifetime is assigned to all output lifetime parameters: `fn foo<'a>(x: &'a i32) -> &'a i32`.
+    - The third rule is that, if there are multiple input lifetime parameters, but one of them is `&self` or `&mut self` because this is a method, the lifetime of self is assigned to all output lifetime parameters. 
+- One special lifetime we need to discuss is `'static`, which denotes that the affected reference can live for the entire duration of the program.
+  - But before specifying `'static` as the lifetime for a reference, think about whether the reference you have actually lives the entire lifetime of your program or not, and whether you want it to.
+  - Most of the time, an error message suggesting the `'static` lifetime results from attempting to create a **dangling reference** or a mismatch of the available lifetimes. In such cases, the solution is fixing those problems, not specifying the `'static` lifetime.
 
 
 
