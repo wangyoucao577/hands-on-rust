@@ -84,7 +84,18 @@ My notes when reading [The Rust Programming Language](https://doc.rust-lang.org/
   - **unit tests**: small and more focused, testing one module in isolation at a time, and can test private interfaces      
   - **integration tests**: entirely external to your library and use your code in the same way any other external code would, using only the public interface and potentially exercising multiple modules per test.
 
+## 15. Smart Pointers
 
+### Most common smart pointers in the standard library
+- `Box<T>` for allocating values on the heap: similar to `unique_ptr`
+- `Rc<T>`, a reference counting type that enables multiple ownership: similar to `shared_ptr`
+- `Ref<T>` and `RefMut<T>`, accessed through `RefCell<T>`, a type that enforces the borrowing rules at runtime instead of compile time
+- `Weak<T>` to prevent reference cycels to avoid memory leak: similar to `weak_ptr`
+
+### Two important traits
+- The `Deref`/`DerefMut` trait allows an instance of the smart pointer struct to behave like a reference so you can write your code to work with either references or smart pointers.
+  - i.e., allows you to customize the behavior of the dereference operator `*`
+- The `Drop` trait allows you to customize the code that’s run when an instance of the smart pointer goes out of scope.
 
 
 ## Useful Tools
