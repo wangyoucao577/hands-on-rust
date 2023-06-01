@@ -1,4 +1,6 @@
 use std::sync::mpsc;
+use std::sync::Arc;
+use std::sync::Mutex;
 use std::thread;
 use std::time::Duration;
 
@@ -13,6 +15,14 @@ fn main() {
 
     println!("---- channel_multiple_producers ----");
     channel_multiple_producers();
+    println!("\n\n");
+
+    println!("---- simple_mutex ----");
+    simple_mutex();
+    println!("\n\n");
+
+    println!("---- shared_mutex_between_multiple_threads ----");
+    shared_mutex_between_multiple_threads();
     println!("\n\n");
 }
 
@@ -98,4 +108,36 @@ fn channel_multiple_producers() {
 
     handle1.join().unwrap();
     handle2.join().unwrap();
+}
+
+fn simple_mutex() {
+    let m = Mutex::new(5);
+
+    {
+        let mut num = m.lock().unwrap();
+        *num = 6;
+    }
+
+    println!("m = {:?}", m);
+}
+
+fn shared_mutex_between_multiple_threads() {
+    let counter = Arc::new(Mutex::new(0));
+    let mut handles = vec![];
+
+    for _ in 0..10 {
+        let counter = Arc::clone(&counter);
+        let handle = thread::spawn(move || {
+            let mut num = counter.lock().unwrap();
+
+            *num += 1;
+        });
+        handles.push(handle);
+    }
+
+    for handle in handles {
+        handle.join().unwrap();
+    }
+
+    println!("Result: {}", *counter.lock().unwrap());
 }
