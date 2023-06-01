@@ -88,7 +88,7 @@ My notes when reading [The Rust Programming Language](https://doc.rust-lang.org/
 
 ### Most common smart pointers in the standard library
 - `Box<T>` for allocating values on the heap: similar to `unique_ptr`
-- `Rc<T>`, a reference counting type that enables multiple ownership: similar to `shared_ptr`
+- `Rc<T>`, a reference counting type that enables multiple ownership: similar to `shared_ptr`(BUT its reference counter is NOT thread safe, use `Arc<T>` instead in such case)
 - `Ref<T>` and `RefMut<T>`, accessed through `RefCell<T>`, a type that enforces the borrowing rules at runtime instead of compile time
 - `Weak<T>` to prevent reference cycels to avoid memory leak: similar to `weak_ptr`
 
