@@ -18,10 +18,10 @@ fn main() {
         Rc::new(ListByRc::Cons(10, Rc::new(ListByRc::Nil))),
     ));
     println!("count after creating a = {}", Rc::strong_count(&a));
-    let b = ListByRc::Cons(3, Rc::clone(&a));
+    let _b = ListByRc::Cons(3, Rc::clone(&a));
     println!("count after creating b = {}", Rc::strong_count(&a));
     {
-        let c = ListByRc::Cons(4, Rc::clone(&a));
+        let _c = ListByRc::Cons(4, Rc::clone(&a));
         println!("count after creating c = {}", Rc::strong_count(&a));
     }
     println!("count after c goes out of scope = {}", Rc::strong_count(&a));
