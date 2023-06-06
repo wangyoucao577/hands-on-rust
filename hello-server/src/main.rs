@@ -12,6 +12,8 @@ fn main() {
     for stream in listener.incoming() {
         let stream = stream.unwrap();
 
+        println!("incoming stream: {:?}", stream);
+
         pool.execute(|| {
             handle_connection(stream);
         });
