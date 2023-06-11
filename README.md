@@ -13,3 +13,5 @@
 - [Rust API Guidelines](https://rust-lang.github.io/api-guidelines/about.html)      
 - [The Cargo Book](https://doc.rust-lang.org/cargo/index.html)
 - [Asynchronous Programming in Rust](https://rust-lang.github.io/async-book/)
+- [Rust by Example](https://doc.rust-lang.org/rust-by-example/)
+- [Rust By Practice](https://practice.rs)
